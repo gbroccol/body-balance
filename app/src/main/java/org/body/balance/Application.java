@@ -1,14 +1,16 @@
 package org.body.balance;
 
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+@Slf4j
 @SpringBootApplication
 public class Application {
+
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
-
-        System.out.println("Для тестирования:");
-        System.out.println("http://localhost:8080");
+        log.info("Для тестирования: http://localhost:8080");
     }
 }
