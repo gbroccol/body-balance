@@ -21,7 +21,7 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeHttpRequests((authorize) -> authorize
                         .antMatchers("/public", "/").permitAll()
-                        .antMatchers("/authenticated", "/api/v1/user").authenticated()
+                        .antMatchers("/authenticated").authenticated()
                         .anyRequest().denyAll()
                 )
                 .httpBasic()
