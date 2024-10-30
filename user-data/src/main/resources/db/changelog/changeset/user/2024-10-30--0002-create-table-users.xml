@@ -1,0 +1,37 @@
+<databaseChangeLog  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                    xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                    http://www.liquibase.org/xml/ns/pro
+                    http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.0.xsd
+                    http://www.liquibase.org/xml/ns/dbchangelog
+                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+    <changeSet id="2024-10-30--0002-create-table-users" author="gbroccol">
+        <createTable schemaName="userinfo" tableName="users" remarks="Пользователь">
+
+            <column name="user_id" type="uuid" remarks="ID">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="username" type="varchar(255)" remarks="имя">
+                <constraints nullable="false" />
+            </column>
+            <column name="name" type="varchar(255)" remarks="имя">
+                <constraints nullable="false" />
+            </column>
+            <column name="surname" type="varchar(255)" remarks="фамилия">
+                <constraints nullable="false"/>
+            </column>
+            <column name="birth_date" type="date" remarks="дата рождения">
+                <constraints nullable="false"/>
+            </column>
+            <column name="change_dt" type="timestamp with timezone">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+        <rollback>
+            <dropTable schemaName="userinfo" tableName="users"/>
+        </rollback>
+    </changeSet>
+</databaseChangeLog>
