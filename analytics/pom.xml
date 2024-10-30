@@ -7,14 +7,11 @@
         <groupId>org.body.balance</groupId>
         <artifactId>body-balance</artifactId>
         <version>1.0.0</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <artifactId>analitics</artifactId>
-
-    <properties>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
+    <groupId>org.body.balance.analytics</groupId>
+    <artifactId>analytics</artifactId>
+    <version>1.0.0</version>
 
 </project>

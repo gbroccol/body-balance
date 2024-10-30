@@ -29,6 +29,9 @@
             <column name="sign_up_dt" type="timestamp with timezone" remarks="дата регистрации">
                 <constraints nullable="false"/>
             </column>
+            <column name="change_dt" type="timestamp with timezone">
+                <constraints nullable="false"/>
+            </column>
         </createTable>
         <rollback>
             <dropTable schemaName="auth" tableName="users"/>
