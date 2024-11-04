@@ -1,17 +1,19 @@
 package org.body.balance.auth.userdetails;
 
-import lombok.AllArgsConstructor;
+import com.sun.istack.NotNull;
+import org.body.balance.auth.domain.AuthUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
 
-@AllArgsConstructor
-public class UserDetailsImpl implements UserDetails {
+public record UserDetailsImpl(String username,
+                              String password) implements UserDetails {
 
-    private final String username;
-    private final String password;
+    public UserDetailsImpl(@NotNull AuthUser authUser) {
+        this(authUser.getUsername(), authUser.getPassword());
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
