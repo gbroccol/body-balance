@@ -17,6 +17,7 @@
 
     <dependencies>
 
+        <!--    Modules    -->
         <dependency>
             <groupId>org.body.balance.auth</groupId>
             <artifactId>auth</artifactId>
@@ -32,10 +33,11 @@
             <artifactId>user-data</artifactId>
             <version>${project.version}</version>
         </dependency>
+
+        <!--   Extra     -->
         <dependency>
-            <groupId>org.body.balance.web</groupId>
-            <artifactId>web</artifactId>
-            <version>${project.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
 
     </dependencies>

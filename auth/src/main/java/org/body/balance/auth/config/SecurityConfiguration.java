@@ -11,8 +11,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfiguration {
 
-    // todo ВОПРОС - это норм что тут описание ручки, которая лежит в другом модуле?
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -20,7 +18,7 @@ public class SecurityConfiguration {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                 .and()
                 .authorizeHttpRequests((authorize) -> authorize
-                        .antMatchers("/public", "/").permitAll()
+                        .antMatchers("/").permitAll()
                         .antMatchers("/authenticated").authenticated()
                         .anyRequest().denyAll()
                 )
