@@ -20,7 +20,6 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests((authorize) -> authorize
                         .antMatchers("/").permitAll()
                         .antMatchers("/authenticated").authenticated()
-                        .anyRequest().denyAll()
                 )
                 .httpBasic()
                 .and()
