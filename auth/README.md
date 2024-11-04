@@ -33,4 +33,3 @@
 - Spring Security
 - JWT
 - Thymeleaf
-- 
