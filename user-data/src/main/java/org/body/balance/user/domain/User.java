@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class User {
 
     @Id
-    private String userId;
+    private String uuid;
 
     private String username;
 
