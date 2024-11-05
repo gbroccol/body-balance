@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class AuthUser {
 
     @Id
-    private String userId;
+    private String uuid;
 
     private String username;
 
