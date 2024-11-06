@@ -10,16 +10,9 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <groupId>org.body.balance.content-article-data</groupId>
     <artifactId>content-article-data</artifactId>
     <version>1.0.0</version>
     <name>content-article-data</name>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
-        </dependency>
-    </dependencies>
 
 </project>
