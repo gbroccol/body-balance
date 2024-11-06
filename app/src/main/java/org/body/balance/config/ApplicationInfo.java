@@ -14,9 +14,12 @@ public class ApplicationInfo implements ApplicationRunner {
     @Value("${app.test.port}")
     private String port;
 
+    @Value("${springdoc.swagger-ui.path}")
+    private String swaggerPath;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.printf("Application started on host: %s:%s%n", host, port);
+        System.out.printf("Application started on host: %s:%s\n", host, port);
+        System.out.printf("Swagger: %s:%s%s\n", host, port, swaggerPath);
     }
 }
-
