@@ -11,16 +11,9 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <groupId>org.body.balance.content-workout-data</groupId>
     <artifactId>content-workout-data</artifactId>
     <version>1.0.0</version>
     <name>content-workout-data</name>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
-        </dependency>
-    </dependencies>
 
 </project>
