@@ -1,0 +1,133 @@
+
+
+{
+  "name" : "Паста с курицей и грибами в сливочном соусе",
+  "cooking_time_min" : 45,
+  "active_cooking_time_min" : 45,
+  "portion_qty" : 4,
+  "spiciness" : 2,
+  "tags" : [""],
+  "cuisine" : ["Italy"],
+  "ingredients" : [
+    {
+      "ingredient_id" : "uuid", // dbref linking
+      "name" : "Шампиньоны", // todo нормально ли дублировать
+      "unit" : "g",
+      "amount" : "250"
+    },
+    {
+      "ingredient_id" : "uuid",
+      "name" : "Куриное филе (грудка)",
+      "unit" : "g",
+      "amount" : "400"
+    },
+    {
+      "ingredient_id" : "uuid",
+      "name" : "Лук красный",
+      "unit" : "g",
+      "amount" : "100"
+    },
+    {
+      "ingredient_id" : "uuid",
+      "name" : "Сметана 10%",
+      "unit" : "g",
+      "amount" : "250"
+    },
+    {
+      "ingredient_id" : "uuid",
+      "name" : "Сыр лёгкий 15%",
+      "unit" : "g",
+      "amount" : "140"
+    },
+    {
+      "ingredient_id" : "uuid",
+      "name" : "Оливковое масло",
+      "unit" : "g",
+      "amount" : "20"
+    },
+    {
+      "ingredient_id" : "uuid",
+      "name" : "Петрушка"
+    },
+    {
+      "ingredient_id" : "uuid",
+      "name" : "Паста (макароны из твердых сортов пшеницы)",
+      "unit" : "g",
+      "amount" : "320"
+    }
+  ],
+  "steps" : [
+    {
+      "number" : 1,
+      "description" : "Лук нарезать полукольцами, шампиньоны пластинками, филе курицы - кубиком."
+    },
+    {
+      "number" : 2,
+      "description" : "В разогретую сковороду добавить масла и выложить грибы. Тушить на среднем огне, помешивая, 5-7 минут."
+    },
+    {
+      "number" : 3,
+      "description" : "Затем добавить лук и тушить все вместе 2-3 минуты"
+    },
+    {
+      "number" : 4,
+      "description" : "Затем добавить курицу и тушить 7-10 минут под крышкой, периодически помешивая."
+    },
+    {
+      "number" : 5,
+      "description" : "Добавить в сковороду сметану, немного воды, специи и соль по вкусу, накрыть крышкой и тушить около 10-15 минут."
+    },
+    {
+      "number" : 6,
+      "description" : "В кипящую подсоленную воду опустить пасту и варить до готовности 5-8 минут. При варке добавить в воду оливковое масло."
+    },
+    {
+      "number" : 7,
+      "description" : "Пасту откинуть на сито, чтобы стекла лишняя вода, затем добавить в сковороду к грибам и курице, перемешать и прогреть 2-3 минуты."
+    },
+    {
+      "number" : 8,
+      "description" : "При подаче посыпать сыром и рубленной петрушкой. Готово!"
+    }
+  ]
+}
+
+
+
+<databaseChangeLog  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+http://www.liquibase.org/xml/ns/pro
+http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.0.xsd
+http://www.liquibase.org/xml/ns/dbchangelog
+http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+<changeSet id="2024-11-10--0002-create-table-dish" author="gbroccol">
+<createTable schemaName="dish" tableName="dish" remarks="Блюдо">
+
+<column name="id" type="bigint" autoIncrement="true" remarks="ID">
+<constraints nullable="false" primaryKey="true"/>
+</column>
+<column name="name" type="varchar(255)" remarks="Название">
+<constraints nullable="false" />
+</column>
+<column name="portion_qty" type="integer" remarks="Количество порций">
+<constraints nullable="false"/>
+</column>
+<column name="spiciness" type="integer" remarks="Острота">
+<constraints nullable="false"/>
+</column>
+<column name="complexity" type="integer" remarks="Сложность приготовления">
+<constraints nullable="false"/>
+</column>
+<column name="create_dt" type="timestamp with timezone" remarks="Дата создания">
+<constraints nullable="false"/>
+</column>
+</createTable>
+<rollback>
+<dropTable schemaName="dish" tableName="dish"/>
+</rollback>
+</changeSet>
+</databaseChangeLog>
