@@ -8,6 +8,13 @@
     <artifactId>body-balance</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.6.3</version>
+    </parent>
+
     <modules>
         <module>app</module>
         <module>content-article-data</module>
@@ -24,6 +31,7 @@
         <module>subscription</module>
         <module>messaging</module>
         <module>monitoring</module>
+<!--   todo     analytics      -->
         <module>analitics</module>
     </modules>
 
@@ -36,6 +44,7 @@
         <spring-boot.version>2.6.3</spring-boot.version>
         <postgresql.version>42.2.22</postgresql.version>
         <liquibase.version>4.8.0</liquibase.version>
+        <spring-boot-mongodb.version>3.3.0</spring-boot-mongodb.version>
 
     </properties>
 
@@ -62,6 +71,18 @@
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
             <version>${liquibase.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>${postgresql.version}</version>
         </dependency>
 
     </dependencies>
