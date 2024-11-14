@@ -1,6 +1,5 @@
 package org.body.balance.auth.userdetails;
 
-import com.sun.istack.NotNull;
 import org.body.balance.auth.domain.AuthUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,12 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-public record UserDetailsImpl(String username,
-                              String password) implements UserDetails {
-
-    public UserDetailsImpl(@NotNull AuthUser authUser) {
-        this(authUser.getUsername(), authUser.getPassword());
-    }
+public record UserDetailsImpl(AuthUser authUser) implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -22,12 +16,12 @@ public record UserDetailsImpl(String username,
 
     @Override
     public String getPassword() {
-        return password;
+        return authUser.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return username;
+        return authUser.getUsername();
     }
 
     @Override
