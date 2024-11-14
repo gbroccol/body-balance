@@ -15,6 +15,6 @@
 
 ## Технологии
 - ELK Stack
-- Prometheus
+- Prometheus (сбор метрик - сколько приложение потребляет памяти / процессора)
 - Grafana
 - Spring Boot Actuator
