@@ -10,16 +10,9 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
+    <groupId>org.body.balance.content-recipe-data</groupId>
     <artifactId>content-recipe-data</artifactId>
     <version>1.0.0</version>
     <name>content-recipe-data</name>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>${postgresql.version}</version>
-        </dependency>
-    </dependencies>
 
 </project>
