@@ -1,6 +1,6 @@
 package org.body.balance.auth.userdetails;
 
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.body.balance.auth.domain.AuthUser;
 import org.body.balance.auth.repository.AuthUserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     private final AuthUserRepository authUserRepository;
