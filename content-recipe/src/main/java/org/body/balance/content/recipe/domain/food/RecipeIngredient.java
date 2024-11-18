@@ -13,11 +13,11 @@ import org.body.balance.content.recipe.domain.dictionary.Unit;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "recipe_ingredient", schema = "food") // ???
+@Table(schema = "food")
 public class RecipeIngredient {
 
     @EmbeddedId
-    private RecipeIngredientId id; // = new RecipeIngredientId();
+    private RecipeIngredientId id;
 
     @ManyToOne
     @MapsId("recipeId")
