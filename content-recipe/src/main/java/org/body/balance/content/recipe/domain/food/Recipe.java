@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 import org.body.balance.content.recipe.domain.dictionary.Cuisine;
 import org.body.balance.content.recipe.domain.dictionary.Tag;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
@@ -56,5 +57,8 @@ public class Recipe {
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Step> steps;
+
+    @Column(nullable = false)
+    private LocalDateTime createDt;
 
 }
