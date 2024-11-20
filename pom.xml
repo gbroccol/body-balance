@@ -11,8 +11,8 @@
 
     <parent>
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.6.3</version>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>3.0.8</version>
     </parent>
 
     <modules>
@@ -21,13 +21,13 @@
         <module>auth</module>
         <module>content-cash</module>
         <module>content-moderation</module>
+        <module>content-recipe</module>
         <module>group-data</module>
         <module>notification</module>
         <module>search</module>
         <module>shopping-list</module>
         <module>user-data</module>
         <module>content-workout-data</module>
-        <module>content-recipe-data</module>
         <module>subscription</module>
         <module>messaging</module>
         <module>monitoring</module>
@@ -43,7 +43,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- -->
         <postgresql.version>42.2.22</postgresql.version>
-        <liquibase.version>4.8.0</liquibase.version>
         <mapstruct.version>1.6.2</mapstruct.version>
         <springdoc-openapi-ui.version>1.6.15</springdoc-openapi-ui.version>
     </properties>
@@ -77,16 +76,22 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
-        <!-- Остальные зависимости -->
         <dependency>
-            <groupId>org.liquibase</groupId>
-            <artifactId>liquibase-core</artifactId>
-            <version>${liquibase.version}</version>
+            <groupId>org.springdoc</groupId>
+            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+            <version>2.0.0</version>
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-validation</artifactId>
+        </dependency>
+
+        <!-- Остальные зависимости -->
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <optional>true</optional>
             <scope>provided</scope>
         </dependency>
 
@@ -97,17 +102,32 @@
         </dependency>
 
         <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>${mapstruct.version}</version>
+        </dependency>
+
+        <!--    data    -->
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-ui</artifactId>
-            <version>${springdoc-openapi-ui.version}</version>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
         </dependency>
-
     </dependencies>
 
     <build>
