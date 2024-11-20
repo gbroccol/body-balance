@@ -1,6 +1,5 @@
 package org.body.balance.user.controller;
 
-import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.body.balance.user.dto.UserDtoResponse;
 import org.body.balance.user.exception.UserNotFoundException;

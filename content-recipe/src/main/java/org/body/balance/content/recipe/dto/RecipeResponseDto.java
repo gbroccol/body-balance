@@ -1,5 +1,6 @@
 package org.body.balance.content.recipe.dto;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public record RecipeResponseDto(String recipeId,
@@ -13,5 +14,6 @@ public record RecipeResponseDto(String recipeId,
                                 CuisineResponseDto cuisine,
                                 List<StepResponseDto> steps,
                                 List<TagResponseDto> tags,
-                                List<IngredientResponseDto> ingredients) {
+                                List<IngredientResponseDto> ingredients,
+                                LocalDateTime createDt) {
 }

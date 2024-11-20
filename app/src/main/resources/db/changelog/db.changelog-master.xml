@@ -10,7 +10,8 @@
                     http://www.liquibase.org/xml/ns/dbchangelog
                     http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
 
-    <include file="db.changelog-auth.xml" relativeToChangelogFile="true"/>
+<!--    <include file="db.changelog-auth.xml" relativeToChangelogFile="true"/>-->
+    <include file="db.changelog-content-recipe.xml" relativeToChangelogFile="true"/>
     <include file="db.changelog-user-data.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>

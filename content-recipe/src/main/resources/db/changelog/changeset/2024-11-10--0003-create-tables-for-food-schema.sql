@@ -17,7 +17,7 @@ create table food.recipe (
     complexity              INTEGER                     NOT NULL,
     spiciness               INTEGER                     NOT NULL,
     cuisine_id              BIGINT                      NULL,
-    create_dt               TIMESTAMP WITHOUT TIME ZONE NOT NULL DEFAULT now(),
+    create_dt               TIMESTAMP WITH TIME ZONE    NOT NULL DEFAULT now(),
     CONSTRAINT pk_recipe PRIMARY KEY (recipe_id),
     CONSTRAINT fk_recipe__cuisine_id FOREIGN KEY (cuisine_id) REFERENCES dictionary.cuisine
 );

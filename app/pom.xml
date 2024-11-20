@@ -18,14 +18,20 @@
     <dependencies>
 
         <!--    Modules    -->
-        <dependency>
-            <groupId>org.body.balance.auth</groupId>
-            <artifactId>auth</artifactId>
-            <version>${project.version}</version>
-        </dependency>
+<!--    todo временно выключаю модуль тк все сломалось(( буду чинить отдельным МР-ом    -->
+<!--        <dependency>-->
+<!--            <groupId>org.body.balance.auth</groupId>-->
+<!--            <artifactId>auth</artifactId>-->
+<!--            <version>${project.version}</version>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.body.balance.monitoring</groupId>
             <artifactId>monitoring</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.body.balance.content.recipe</groupId>
+            <artifactId>content-recipe</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>

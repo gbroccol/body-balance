@@ -35,7 +35,7 @@
 15. [Analytics and Reporting Service](./analytics/README.md) - Сбор и анализ данных
 
 
-## Стек технологий
+## Стек технологий (пока это только хотелки)
 - Java (Spring Boot)
 - Spring Framework
 - Swagger + OpenAPI
@@ -48,6 +48,7 @@
 - Kubernetes (для оркестрации контейнеров)
 - Amazon S3 / AWS S3 - Cloud Object Storage - хранилище бинарных данных (для хранения картинок/видео/аудио). Альтернатива: GCS / Azure / Minio
 - Hazelcast / Redis для распределенного кеширования
+- AWS
 
 ## Microservice Design Patterns и примеры использования в рамках приложения "Body Balance"
 
