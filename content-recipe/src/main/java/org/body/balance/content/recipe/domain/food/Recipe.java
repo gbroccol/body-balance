@@ -5,10 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import jakarta.persistence.*;
 import org.body.balance.content.recipe.domain.dictionary.Cuisine;
 import org.body.balance.content.recipe.domain.dictionary.Tag;
+import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -22,7 +23,8 @@ import java.util.Set;
 public class Recipe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(generator = "uuid-hibernate-generator")
+    @GenericGenerator(name = "uuid-hibernate-generator", strategy = "org.hibernate.id.UUIDGenerator")
     private String recipeId;
 
     private String name;

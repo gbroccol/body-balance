@@ -18,12 +18,11 @@
     <dependencies>
 
         <!--    Modules    -->
-<!--    todo временно выключаю модуль тк все сломалось(( буду чинить отдельным МР-ом    -->
-<!--        <dependency>-->
-<!--            <groupId>org.body.balance.auth</groupId>-->
-<!--            <artifactId>auth</artifactId>-->
-<!--            <version>${project.version}</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>org.body.balance.auth</groupId>
+            <artifactId>auth</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.body.balance.monitoring</groupId>
             <artifactId>monitoring</artifactId>

@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
-import jakarta.persistence.*;
-
+import javax.persistence.*;
 import java.util.Set;
 
 @Entity
@@ -18,7 +18,8 @@ import java.util.Set;
 public class Ingredient {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(generator = "uuid-hibernate-generator")
+    @GenericGenerator(name = "uuid-hibernate-generator", strategy = "org.hibernate.id.UUIDGenerator")
     private String ingredientId;
 
     private String name;

@@ -5,8 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import jakarta.persistence.*;
 import org.body.balance.content.recipe.domain.dictionary.Unit;
+
+import javax.persistence.*;
 
 @Entity
 @Getter

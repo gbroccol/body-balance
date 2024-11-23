@@ -18,8 +18,8 @@ public class SecurityConfiguration {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS)
                 .and()
                 .authorizeHttpRequests((authorize) -> authorize
-                        .requestMatchers("/").permitAll()
-                        .requestMatchers("/authenticated").authenticated()
+                        .antMatchers("/").permitAll()
+                        .antMatchers("/authenticated").authenticated()
                 )
                 .httpBasic()
                 .and()

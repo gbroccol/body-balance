@@ -3,7 +3,7 @@ package org.body.balance.auth.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Getter
