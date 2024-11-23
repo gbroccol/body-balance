@@ -4,6 +4,8 @@
     <Appenders>
         <Console name="Console">
             <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS}  %-5level  [%t]  %logger{36} - %msg%n"/>
+<!--      todo подключить переменные (traceId)     -->
+<!--            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS}  %highlight(%-5level)  [%thread] %magenta([generalId=%X{generalId}])  %logger{36} - %msg%n"/>-->
         </Console>
     </Appenders>
 
