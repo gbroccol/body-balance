@@ -19,7 +19,7 @@ import java.util.Set;
 public class Tag {
 
     @Id
-    private Long tagId;
+    private Integer tagId;
 
     private String name;
 

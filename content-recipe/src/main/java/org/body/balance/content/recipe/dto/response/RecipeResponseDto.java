@@ -1,8 +1,10 @@
-package org.body.balance.content.recipe.dto;
+package org.body.balance.content.recipe.dto.response;
 
-import java.time.LocalDateTime;
+import lombok.Builder;
+
 import java.util.List;
 
+@Builder
 public record RecipeResponseDto(String recipeId,
                                 String name,
                                 String description,
@@ -14,6 +16,5 @@ public record RecipeResponseDto(String recipeId,
                                 CuisineResponseDto cuisine,
                                 List<StepResponseDto> steps,
                                 List<TagResponseDto> tags,
-                                List<IngredientResponseDto> ingredients,
-                                LocalDateTime createDt) {
+                                List<IngredientResponseDto> ingredients) {
 }
