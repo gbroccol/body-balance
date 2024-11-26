@@ -15,7 +15,7 @@ public record RecipeGetAllService(RecipeRepository repository,
                                   RecipeMapper recipeMapper) {
 
     public List<RecipeResponseDto> handleRequest(int page, int size) {
-        Page<Recipe> res = repository.findAll(PageRequest.of(page, size));
+        Page<Recipe> res = repository.findByDeleteDtIsNull(PageRequest.of(page, size));
         return recipeMapper.toResponseDto(res.getContent());
     }
 }
