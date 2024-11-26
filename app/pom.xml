@@ -29,6 +29,11 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.body.balance.content.recipe</groupId>
+            <artifactId>content-recipe</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.body.balance.user</groupId>
             <artifactId>user-data</artifactId>
             <version>${project.version}</version>
