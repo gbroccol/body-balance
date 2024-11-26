@@ -45,6 +45,7 @@
         <postgresql.version>42.2.22</postgresql.version>
         <mapstruct.version>1.6.2</mapstruct.version>
         <springdoc-openapi-ui.version>1.6.15</springdoc-openapi-ui.version>
+        <swagger-annotations.version>2.2.8</swagger-annotations.version>
     </properties>
 
     <dependencies>
@@ -114,6 +115,12 @@
             <version>${postgresql.version}</version>
         </dependency>
 
+        <!-- Swagger -->
+        <dependency>
+            <groupId>io.swagger.core.v3</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>${swagger-annotations.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
