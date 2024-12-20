@@ -15,25 +15,6 @@
         <version>2.6.3</version>
     </parent>
 
-    <modules>
-        <module>app</module>
-        <module>content-article-data</module>
-        <module>auth</module>
-        <module>content-cash</module>
-        <module>content-moderation</module>
-        <module>content-recipe</module>
-        <module>group-data</module>
-        <module>notification</module>
-        <module>search</module>
-        <module>shopping-list</module>
-        <module>user-data</module>
-        <module>content-workout-data</module>
-        <module>subscription</module>
-        <module>messaging</module>
-        <module>monitoring</module>
-        <module>analytics</module>
-    </modules>
-
     <properties>
         <major.version>01</major.version>
         <minor.version>01</minor.version>
@@ -117,60 +98,5 @@
         </dependency>
 
     </dependencies>
-
-    <build>
-        <finalName>${project.artifactId}</finalName>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-            <resource>
-                <directory>src/test/resources</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <source>${maven-compiler-plugin.source}</source>
-                    <target>${maven-compiler-plugin.target}</target>
-                    <annotationProcessorPaths>
-                        <annotationProcessorPath>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>${lombok.version}</version>
-                        </annotationProcessorPath>
-                        <annotationProcessorPath>
-                            <groupId>org.mapstruct</groupId>
-                            <artifactId>mapstruct-processor</artifactId>
-                            <version>${mapstruct.version}</version>
-                        </annotationProcessorPath>
-                        <compilerArgs>
-                            <compilerArg>
-                                -Amapstruct.defaultComponentModel=spring
-                            </compilerArg>
-                        </compilerArgs>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

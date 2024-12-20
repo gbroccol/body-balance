@@ -1,7 +1,6 @@
-package org.body.balance.monitoring.interceptor;
+package org.body.balance.shopping.config.logging;
 
 import lombok.extern.log4j.Log4j2;
-import org.body.balance.monitoring.utils.MonitoringConstants;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 

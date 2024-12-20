@@ -52,31 +52,41 @@ services:
     ports:
       - "5436:5432"
 
-#  grafana:
-#    image: grafana/grafana-enterprise
-#    container_name: grafana
-#    restart: unless-stopped
-#    ports:
-#      - '3000:3000'
-#    volumes:
-#      - grafana-storage:/var/lib/grafana
-#
-#  prometheus:
-#    image: prom/prometheus
-#    ports:
-#      - 9090:9090
-#    volumes:
-#      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+  postgres-auth:
+    image: postgres:15.8-alpine3.20
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password-auth # todo change
+      POSTGRES_USER: postgres
+      POSTGRES_DB: auth
+    ports:
+      - "5437:5432"
 
-#  postgres-exporter:
-#    image: prometheuscommunity/postgres-exporter
-#    ports:
-#      - 9187:9187
-#    environment:
-#      DATA_SOURCE_NAME: "postgresql://postgres:postgres@postgres:5433/recipe?sslmode=disable"
-#    links:
-#      - postgres-recipe
-#      - prometheus
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - grafana-storage:/var/lib/grafana
 
-#volumes:
-#  grafana-storage: { }
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+
+  postgres-exporter:
+    image: prometheuscommunity/postgres-exporter
+    ports:
+      - 9187:9187
+    environment:
+      DATA_SOURCE_NAME: "postgresql://postgres:postgres@postgres:5433/recipe?sslmode=disable"
+    links:
+      - postgres-recipe
+      - prometheus
+
+volumes:
+  grafana-storage: { }
