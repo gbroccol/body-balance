@@ -13,7 +13,7 @@
 
 <!--    rename -->
     <groupId>org.body.balance.user</groupId>
-    <artifactId>user-data</artifactId>
+    <artifactId>user</artifactId>
     <version>1.0.0</version>
 
     <properties>
