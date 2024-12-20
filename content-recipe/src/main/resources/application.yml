@@ -1,15 +1,17 @@
 app:
   test:
-    host : http://localhost
-    port : 8080
+    host : http://localhost # найти другой способ выводить эту информацию в консоль
+
+server:
+  port: 8080
 
 spring:
   application:
     name : content-recipe
   datasource:
-    url: jdbc:postgresql://localhost:5432/body_balance
+    url: jdbc:postgresql://localhost:5433/recipe
     username : postgres
-    password : postgres
+    password : password-recipe
     driver-class-name : org.postgresql.Driver
   liquibase:
     change-log: db/changelog/db.changelog-master.xml

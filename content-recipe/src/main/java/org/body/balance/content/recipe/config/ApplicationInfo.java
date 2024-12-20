@@ -11,7 +11,7 @@ public class ApplicationInfo implements ApplicationRunner {
     @Value("${app.test.host}")
     private String host;
 
-    @Value("${app.test.port}")
+    @Value("${server.port}")
     private String port;
 
     @Value("${springdoc.swagger-ui.path}")
