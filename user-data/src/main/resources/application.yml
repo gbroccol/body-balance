@@ -7,7 +7,7 @@ server:
 
 spring:
   application:
-    name : user
+    name : User
   datasource:
     url: jdbc:postgresql://localhost:5432/user
     username : postgres
