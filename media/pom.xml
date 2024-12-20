@@ -10,9 +10,14 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>org.body.balance.content-article-data</groupId>
-    <artifactId>content-article-data</artifactId>
+    <groupId>org.body.balance.media</groupId>
+    <artifactId>media</artifactId>
     <version>1.0.0</version>
-    <name>content-article-data</name>
+    <name>media</name>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
 
 </project>

@@ -1,15 +1,17 @@
 app:
   test:
-    host : http://localhost
-    port : 8080
+    host : http://localhost # найти другой способ выводить эту информацию в консоль
+
+server:
+  port: 8082
 
 spring:
   application:
-    name : body_balance
+    name : Media
   datasource:
-    url: jdbc:postgresql://localhost:5432/body_balance
+    url: jdbc:postgresql://localhost:5435/media
     username : postgres
-    password : postgres
+    password : password-media
     driver-class-name : org.postgresql.Driver
   liquibase:
     change-log: db/changelog/db.changelog-master.xml
