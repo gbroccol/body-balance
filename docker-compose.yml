@@ -2,41 +2,81 @@ version: '3.1'
 
 services:
 
-  postgres:
+  postgres-user:
     image: postgres:15.8-alpine3.20
     restart: always
     environment:
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: password-user # todo change
       POSTGRES_USER: postgres
-      POSTGRES_DB: body_balance
+      POSTGRES_DB: user
     ports:
       - "5432:5432"
 
-  grafana:
-    image: grafana/grafana-enterprise
-    container_name: grafana
-    restart: unless-stopped
-    ports:
-      - '3000:3000'
-    volumes:
-      - grafana-storage:/var/lib/grafana
-
-  prometheus:
-    image: prom/prometheus
-    ports:
-      - 9090:9090
-    volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
-
-  postgres-exporter:
-    image: prometheuscommunity/postgres-exporter
-    ports:
-      - 9187:9187
+  postgres-recipe:
+    image: postgres:15.8-alpine3.20
+    restart: always
     environment:
-      DATA_SOURCE_NAME: "postgresql://postgres:postgres@postgres:5432/body_balance?sslmode=disable"
-    links:
-      - postgres
-      - prometheus
+      POSTGRES_PASSWORD: password-recipe # todo change
+      POSTGRES_USER: postgres
+      POSTGRES_DB: recipe
+    ports:
+      - "5433:5432"
 
-volumes:
-  grafana-storage: { }
+  postgres-shopping:
+    image: postgres:15.8-alpine3.20
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password-shopping # todo change
+      POSTGRES_USER: postgres
+      POSTGRES_DB: shopping
+    ports:
+      - "5434:5432"
+
+  postgres-media:
+    image: postgres:15.8-alpine3.20
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password-media # todo change
+      POSTGRES_USER: postgres
+      POSTGRES_DB: media
+    ports:
+      - "5435:5432"
+
+  postgres-notification:
+    image: postgres:15.8-alpine3.20
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password-notification # todo change
+      POSTGRES_USER: postgres
+      POSTGRES_DB: notification
+    ports:
+      - "5436:5432"
+
+#  grafana:
+#    image: grafana/grafana-enterprise
+#    container_name: grafana
+#    restart: unless-stopped
+#    ports:
+#      - '3000:3000'
+#    volumes:
+#      - grafana-storage:/var/lib/grafana
+#
+#  prometheus:
+#    image: prom/prometheus
+#    ports:
+#      - 9090:9090
+#    volumes:
+#      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+
+#  postgres-exporter:
+#    image: prometheuscommunity/postgres-exporter
+#    ports:
+#      - 9187:9187
+#    environment:
+#      DATA_SOURCE_NAME: "postgresql://postgres:postgres@postgres:5433/recipe?sslmode=disable"
+#    links:
+#      - postgres-recipe
+#      - prometheus
+
+#volumes:
+#  grafana-storage: { }
