@@ -1,4 +1,7 @@
-app:
+application:
+  kafka:
+    topic:
+      recipe-created: recipe-created
   test:
     host : http://localhost # найти другой способ выводить эту информацию в консоль
 
@@ -23,6 +26,11 @@ spring:
         format_sql: false
 #    hibernate:
 #      ddl-auto : update
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
 logging:
   config: recipe/src/main/resources/log4j2.xml

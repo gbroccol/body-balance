@@ -1,19 +1,50 @@
 package org.body.balance.recipe.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.body.balance.recipe.config.logging.MonitoringConstants;
 import org.body.balance.recipe.domain.food.Recipe;
+import org.body.balance.recipe.dto.RecipeCreatedEvent;
 import org.body.balance.recipe.dto.request.RecipeRequestDto;
 import org.body.balance.recipe.dto.response.RecipeResponseDto;
 import org.body.balance.recipe.mapper.RecipeMapper;
 import org.body.balance.recipe.repository.RecipeRepository;
+import org.body.balance.recipe.sender.DataSender;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
 
+import javax.servlet.http.HttpServletRequest;
+
+@Log4j2
 @Service
-public record RecipeCreateUpdateService(RecipeRepository repository,
-                                        RecipeMapper recipeMapper) {
+@RequiredArgsConstructor
+public class RecipeCreateUpdateService {
 
-    public RecipeResponseDto handleRequest(RecipeRequestDto dto) {
+    private final RecipeRepository repository;
+    private final RecipeMapper recipeMapper;
+    private final DataSender dataSender;
+    private final ObjectMapper om;
+
+//    @Transactional
+    public RecipeResponseDto handleRequest(RecipeRequestDto dto) throws JsonProcessingException {
+
+        // todo выкидывать нормальные ошибки при попытке создать рецепт с несущ-м ингредиентом, тегом и тд
+        // todo удалить проверку на БД - имя каждого рецепта должно быть уникально
+
         Recipe recipe = repository.save(recipeMapper.toEntity(dto));
+        dataSender.send(om.writeValueAsString(
+                new RecipeCreatedEvent(getGeneralId(), recipe.getRecipeId(), recipe.getName(), recipe.getOwnerId().toString()))); // todo mapstruct
         return recipeMapper.toResponseDto(recipe);
+    }
+
+    private String getGeneralId() {
+        HttpServletRequest request = (HttpServletRequest) RequestContextHolder
+                .currentRequestAttributes()
+                .resolveReference(RequestAttributes.REFERENCE_REQUEST);
+        return (String) request.getAttribute(MonitoringConstants.HEADER_GENERAL_ID);
     }
 
 }

@@ -1,5 +1,6 @@
 package org.body.balance.recipe.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.body.balance.recipe.dto.request.RecipeRequestDto;
@@ -30,11 +31,15 @@ public class RecipeControllerV1 {
 
     @PostMapping
     public ResponseEntity<RecipeResponseDto> createUpdate(@RequestBody RecipeRequestDto dto) {
-        return new ResponseEntity<>(recipeCreateUpdateService.handleRequest(dto), HttpStatus.OK);
+        try {
+            return new ResponseEntity<>(recipeCreateUpdateService.handleRequest(dto), HttpStatus.OK);
+        } catch (JsonProcessingException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
 
     @DeleteMapping
-    public ResponseEntity<Integer> delete(@NotNull @RequestParam String recipeId) { // todo return body ?
+    public ResponseEntity<Integer> delete(@NotNull @RequestParam String recipeId) {
         return new ResponseEntity<>(recipeDeleteService.handleRequest(recipeId), HttpStatus.OK);
     }
 

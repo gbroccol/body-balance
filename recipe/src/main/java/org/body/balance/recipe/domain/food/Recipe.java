@@ -11,10 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Getter
@@ -63,4 +60,6 @@ public class Recipe {
     private List<Step> steps = new ArrayList<>();
 
     private LocalDateTime deleteDt;
+
+    private final UUID ownerId = UUID.fromString("fdd3c0c5-01ee-4cc6-8d86-ce47c7a4b57a"); // todo убрать хардкод
 }

@@ -2,7 +2,7 @@ package org.body.balance.recipe.dto.response;
 
 import lombok.Builder;
 
-@Builder // todo - Вопрос - Builder - это же доп память, зачем он нам тут?
+@Builder // todo - посмотреть через анализатор как влияет на память
 public record IngredientResponseDto(String ingredientId,
                                     String ingredientName,
                                     Long unitId,

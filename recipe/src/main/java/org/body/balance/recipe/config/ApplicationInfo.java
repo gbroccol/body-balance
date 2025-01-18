@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ApplicationInfo implements ApplicationRunner {
 
-    @Value("${app.test.host}")
+    @Value("${application.test.host}")
     private String host;
 
     @Value("${server.port}")
