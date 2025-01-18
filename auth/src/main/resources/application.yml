@@ -1,4 +1,4 @@
-app:
+application:
   test:
     host : http://localhost # найти другой способ выводить эту информацию в консоль
 
