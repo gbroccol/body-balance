@@ -17,12 +17,12 @@ import java.util.Set;
 @Mapper(componentModel = "spring")
 public interface RecipeMapper {
 
-    @Mapping(source = "ingredient.ingredientId", target = "ingredientId")
-    @Mapping(source = "ingredient.name", target = "ingredientName")
-    @Mapping(source = "unit.unitId", target = "unitId")
-    @Mapping(source = "unit.name", target = "unitName")
-    @Mapping(source = "unit.shortName", target = "unitShortName")
-    IngredientResponseDto toResponseDto(RecipeIngredient recipeIngredient);
+//    @Mapping(source = "ingredient.ingredientId", target = "ingredientId")
+//    @Mapping(source = "ingredient.name", target = "ingredientName")
+//    @Mapping(source = "unit.unitId", target = "unitId")
+//    @Mapping(source = "unit.name", target = "unitName")
+//    @Mapping(source = "unit.shortName", target = "unitShortName")
+//    IngredientResponseDto toResponseDto(RecipeIngredient recipeIngredient);
 
     List<RecipeResponseDto> toResponseDto(List<Recipe> recipes);
 
@@ -39,19 +39,19 @@ public interface RecipeMapper {
         return res;
     }
 
-    default List<RecipeIngredient> mapIngredientsToEntity(List<IngredientRequestDto> ingredients) {
-        List<RecipeIngredient> res = new ArrayList<>();
-
-        for (IngredientRequestDto dto : ingredients) {
-            Ingredient ingredient = new Ingredient(dto.ingredientId(), null, null);
-            Unit unit = new Unit(dto.unitId(), null, null, null);
-            RecipeIngredientId recipeIngredientId = new RecipeIngredientId(null, dto.ingredientId());
-            RecipeIngredient recipeIngredient = new RecipeIngredient(recipeIngredientId, null, ingredient, unit, dto.amount());
-            res.add(recipeIngredient);
-        }
-
-        return res;
-    }
+//    default List<RecipeIngredient> mapIngredientsToEntity(List<IngredientRequestDto> ingredients) {
+//        List<RecipeIngredient> res = new ArrayList<>();
+//
+//        for (IngredientRequestDto dto : ingredients) {
+//            Ingredient ingredient = new Ingredient(dto.ingredientId(), null, null);
+//            Unit unit = new Unit(dto.unitId(), null, null, null);
+//            RecipeIngredientId recipeIngredientId = new RecipeIngredientId(null, dto.ingredientId());
+//            RecipeIngredient recipeIngredient = new RecipeIngredient(recipeIngredientId, null, ingredient, unit, dto.amount());
+//            res.add(recipeIngredient);
+//        }
+//
+//        return res;
+//    }
 
     @AfterMapping
     default void after(@MappingTarget Recipe recipe) {
@@ -60,9 +60,9 @@ public interface RecipeMapper {
             step.setRecipe(recipe);
         }
 
-        for (RecipeIngredient ri : recipe.getIngredients()) {
-            ri.getId().setRecipeId(recipe.getRecipeId());
-            ri.setRecipe(recipe);
-        }
+//        for (RecipeIngredient ri : recipe.getIngredients()) {
+//            ri.getId().setRecipeId(recipe.getRecipeId());
+//            ri.setRecipe(recipe);
+//        }
     }
 }

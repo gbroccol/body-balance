@@ -34,7 +34,10 @@ public class RecipeCreateUpdateService {
         // todo выкидывать нормальные ошибки при попытке создать рецепт с несущ-м ингредиентом, тегом и тд
         // todo удалить проверку на БД - имя каждого рецепта должно быть уникально
 
-        Recipe recipe = repository.save(recipeMapper.toEntity(dto));
+        Recipe recipe = recipeMapper.toEntity(dto);
+        recipe.setIngredients(null); // todo исправить
+
+        recipe = repository.save(recipe);
         dataSender.send(om.writeValueAsString(
                 new RecipeCreatedEvent(getGeneralId(), recipe.getRecipeId(), recipe.getName(), recipe.getOwnerId().toString()))); // todo mapstruct
         return recipeMapper.toResponseDto(recipe);
