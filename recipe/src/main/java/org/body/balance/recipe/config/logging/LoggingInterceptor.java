@@ -24,7 +24,7 @@ public class LoggingInterceptor implements HandlerInterceptor {
         request.setAttribute(MonitoringConstants.HEADER_GENERAL_ID, generalId);
         response.setHeader(MonitoringConstants.HEADER_GENERAL_ID, generalId);
 
-        log.info("GeneralId: {} Request: {} {}", generalId, request.getMethod(), request.getRequestURI()); // todo удалить g_id вынести его в общий лог (log4j2.xml)
+        log.info("GeneralId: {} Request: {} {}", generalId, request.getMethod(), request.getRequestURI());
         return true;  // Allows the request to proceed
     }
 
@@ -38,7 +38,7 @@ public class LoggingInterceptor implements HandlerInterceptor {
                                 Object handler,
                                 Exception ex) {
         String generalId = response.getHeader(MonitoringConstants.HEADER_GENERAL_ID);
-        log.info("GeneralId: {} Response: {} {} {}", generalId, response.getStatus(), request.getMethod(), request.getRequestURI()); // todo удалить g_id вынести его в общий лог (log4j2.xml)
+        log.info("GeneralId: {} Response: {} {} {}", generalId, response.getStatus(), request.getMethod(), request.getRequestURI());
         if (ex != null) {
             log.error("Exception: ", ex);
         }
