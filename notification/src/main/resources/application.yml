@@ -23,11 +23,11 @@ spring:
         format_sql: false
 #    hibernate:
 #      ddl-auto : update
-#  kafka:
-#    bootstrap-servers: localhost:9092
-#    consumer:
-#      group-id: notification-group
-#      auto-offset-reset: earliest
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: notification-group
+      auto-offset-reset: earliest
 
 logging:
   config: notification/src/main/resources/log4j2.xml
