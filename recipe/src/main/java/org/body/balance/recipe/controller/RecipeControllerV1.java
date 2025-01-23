@@ -19,13 +19,15 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RecipeControllerV1 {
 
+    private final static String PAGE_SIZE_DEFAULT = "10";
+
     private final RecipeGetAllService recipeGetAllService;
     private final RecipeCreateUpdateService recipeCreateUpdateService;
     private final RecipeDeleteService recipeDeleteService;
 
     @GetMapping
     public ResponseEntity<List<RecipeResponseDto>> get(@NotNull @RequestParam Integer page,
-                                                       @RequestParam(defaultValue = "10") Integer size) { // todo переменная
+                                                       @RequestParam(defaultValue = PAGE_SIZE_DEFAULT) Integer size) {
         return new ResponseEntity<>(recipeGetAllService.handleRequest(page, size), HttpStatus.OK);
     }
 
