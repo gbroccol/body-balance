@@ -22,7 +22,7 @@ public interface RecipeMapper {
     @Mapping(source = "unit.unitId", target = "unitId")
     @Mapping(source = "unit.name", target = "unitName")
     @Mapping(source = "unit.shortName", target = "unitShortName")
-    IngredientResponseDto toResponseDto(RecipeIngredient recipeIngredient);
+    IngredientResponseDto toResponseDto(RecipeIngredient recipeIngredient); // todo создать отдельный маппер для ингредиента
 
     List<RecipeResponseDto> toResponseDto(List<Recipe> recipes);
 
