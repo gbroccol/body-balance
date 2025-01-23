@@ -12,9 +12,9 @@ import java.util.Set;
 @Entity
 @Getter
 @Setter
-@NoArgsConstructor // todo будем выносить в общий класс?
+@NoArgsConstructor
 @AllArgsConstructor
-@Table(schema = "food") // todo обдумать возможно dictionary
+@Table(schema = "food")
 public class Ingredient {
 
     @Id
