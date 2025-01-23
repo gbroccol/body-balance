@@ -2,7 +2,7 @@ package org.body.balance.recipe.dto.response;
 
 import lombok.Builder;
 
-@Builder // todo - посмотреть через анализатор как влияет на память
+@Builder
 public record IngredientResponseDto(String ingredientId,
                                     String ingredientName,
                                     Long unitId,
