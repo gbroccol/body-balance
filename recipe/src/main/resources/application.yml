@@ -1,16 +1,14 @@
 application:
+  name: Recipe
+  host: http://localhost
   kafka:
     topic:
       recipe-created: recipe-created
-  test:
-    host : http://localhost # найти другой способ выводить эту информацию в консоль
 
 server:
   port: 8080
 
 spring:
-  application:
-    name : Recipe
   datasource:
     url: jdbc:postgresql://localhost:5433/recipe
     username : postgres

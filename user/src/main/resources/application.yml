@@ -1,13 +1,11 @@
 application:
-  test:
-    host : http://localhost # найти другой способ выводить эту информацию в консоль
+  name: User
+  host: http://localhost
 
 server:
   port: 8081
 
 spring:
-  application:
-    name : User
   datasource:
     url: jdbc:postgresql://localhost:5432/user
     username : postgres

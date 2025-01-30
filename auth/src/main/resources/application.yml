@@ -1,13 +1,11 @@
 application:
-  test:
-    host : http://localhost # найти другой способ выводить эту информацию в консоль
+  name: Authentication
+  host: http://localhost
 
 server:
   port: 8085
 
 spring:
-  application:
-    name : Authentication
   datasource:
     url: jdbc:postgresql://localhost:5437/auth
     username : postgres
