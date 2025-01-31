@@ -1,6 +1,7 @@
 package org.body.balance.media.config.logging;
 
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 
@@ -19,7 +20,7 @@ public class LoggingInterceptor implements HandlerInterceptor {
 
         String generalId = request.getHeader(MonitoringConstants.HEADER_GENERAL_ID);
 
-        if (generalId == null || generalId.isEmpty()) generalId = getUuid();
+        if (StringUtils.isEmpty(generalId)) generalId = getUuid();
 
         request.setAttribute(MonitoringConstants.HEADER_GENERAL_ID, generalId);
         response.setHeader(MonitoringConstants.HEADER_GENERAL_ID, generalId);
