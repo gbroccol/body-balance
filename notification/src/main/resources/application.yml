@@ -1,0 +1,38 @@
+application:
+  name: Notification
+  host: http://localhost
+
+server:
+  port: 8084
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5436/notification
+    username : postgres
+    password : password-notification
+    driver-class-name : org.postgresql.Driver
+  liquibase:
+    change-log: db/changelog/db.changelog-master.xml
+    enabled: true
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+#    hibernate:
+#      ddl-auto : update
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: notification-group
+      auto-offset-reset: earliest
+
+logging:
+  config: notification/src/main/resources/log4j2.xml
+
+#logging.level.org.hibernate.SQL=DEBUG
+#logging.level.org.hibernate.type.descriptor.sql=TRACE
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui
