@@ -7,6 +7,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.UUID;
 
 @Log4j2
@@ -25,7 +26,7 @@ public class LoggingInterceptor implements HandlerInterceptor { // todo выне
         request.setAttribute(MonitoringConstants.HEADER_GENERAL_ID, generalId);
         response.setHeader(MonitoringConstants.HEADER_GENERAL_ID, generalId);
 
-        log.info("GeneralId: {}, Response Status: {}, Method: {}, URI: {}", generalId, response.getStatus(), request.getMethod(), request.getRequestURI());
+        log.info("GeneralId: {}, Request Method: {}, Request URI: {}", generalId, request.getMethod(), request.getRequestURI());
 
         return true;  // Allows the request to proceed
     }
@@ -38,16 +39,22 @@ public class LoggingInterceptor implements HandlerInterceptor { // todo выне
     public void afterCompletion(HttpServletRequest request,
                                 HttpServletResponse response,
                                 Object handler,
-                                Exception ex) {
+                                Exception ex) throws IOException {
 
-        log.info("GeneralId: {} Response: {} {} {}",
-                response.getHeader(MonitoringConstants.HEADER_GENERAL_ID),
-                response.getStatus(),
-                request.getMethod(),
-                request.getRequestURI());
 
-        if (ex != null) {
-            log.error("Exception: ", ex);
+        if (ex == null) {
+            log.error("GeneralId: {} Response: {} {} {}",
+                    response.getHeader(MonitoringConstants.HEADER_GENERAL_ID),
+                    response.getStatus(),
+                    request.getMethod(),
+                    request.getRequestURI());
+        } else {
+            log.info("GeneralId: {} Response: {} {} {} Exception: {}",
+                    response.getHeader(MonitoringConstants.HEADER_GENERAL_ID),
+                    response.getStatus(),
+                    request.getMethod(),
+                    request.getRequestURI(),
+                    ex);
         }
     }
 }

@@ -5,6 +5,7 @@ import com.sun.istack.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.body.balance.recipe.dto.request.RecipeRequestDto;
 import org.body.balance.recipe.dto.response.RecipeResponseDto;
+import org.body.balance.recipe.exception.SendDataToKafkaException;
 import org.body.balance.recipe.service.RecipeCreateUpdateService;
 import org.body.balance.recipe.service.RecipeDeleteService;
 import org.body.balance.recipe.service.RecipeGetAllService;
