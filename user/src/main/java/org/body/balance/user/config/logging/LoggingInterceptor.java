@@ -11,7 +11,7 @@ import java.util.UUID;
 
 @Log4j2
 @Component
-public class LoggingInterceptor implements HandlerInterceptor {
+public class LoggingInterceptor implements HandlerInterceptor { // todo вынести в стартер + конфигурацию кафки
 
     @Override
     public boolean preHandle(HttpServletRequest request,
@@ -25,7 +25,8 @@ public class LoggingInterceptor implements HandlerInterceptor {
         request.setAttribute(MonitoringConstants.HEADER_GENERAL_ID, generalId);
         response.setHeader(MonitoringConstants.HEADER_GENERAL_ID, generalId);
 
-        log.info("GeneralId: {} Request: {} {}", generalId, request.getMethod(), request.getRequestURI());
+        log.info("GeneralId: {}, Response Status: {}, Method: {}, URI: {}", generalId, response.getStatus(), request.getMethod(), request.getRequestURI());
+
         return true;  // Allows the request to proceed
     }
 
@@ -38,8 +39,13 @@ public class LoggingInterceptor implements HandlerInterceptor {
                                 HttpServletResponse response,
                                 Object handler,
                                 Exception ex) {
-        String generalId = response.getHeader(MonitoringConstants.HEADER_GENERAL_ID);
-        log.info("GeneralId: {} Response: {} {} {}", generalId, response.getStatus(), request.getMethod(), request.getRequestURI());
+
+        log.info("GeneralId: {} Response: {} {} {}",
+                response.getHeader(MonitoringConstants.HEADER_GENERAL_ID),
+                response.getStatus(),
+                request.getMethod(),
+                request.getRequestURI());
+
         if (ex != null) {
             log.error("Exception: ", ex);
         }
