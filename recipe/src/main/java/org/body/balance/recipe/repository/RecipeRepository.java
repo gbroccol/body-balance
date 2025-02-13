@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 public interface RecipeRepository extends JpaRepository<Recipe, String> {
 
     @Modifying
-    @Query("UPDATE Recipe r SET r.deleteDt = now() WHERE r.recipeId = :id AND r.deleteDt IS NULL")
+    @Query("UPDATE Recipe r SET r.deleteDt = now() WHERE r.recipeId = :id AND r.deleteDt IS NULL") // todo cron для удаления
     int markAsDeleted(@Param("id") String id);
 
     Page<Recipe> findByDeleteDtIsNull(Pageable pageable);

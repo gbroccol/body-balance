@@ -26,6 +26,6 @@ public record GetUserService(UserRepository repository,
     public UserDtoResponse handleRequest(String username) {
         return userMapper.toDtoResponse(
                 repository.findByUsername(username)
-                        .orElseThrow(() -> new UserNotFoundException((ErrorMessages.NOT_FOUND.getValue()).formatted(username))));
+                        .orElseThrow(() -> new UserNotFoundException((ErrorMessages.USERNAME_NOT_FOUND.getValue()).formatted(username))));
     }
 }

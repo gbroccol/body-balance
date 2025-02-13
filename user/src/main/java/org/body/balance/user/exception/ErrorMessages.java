@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @RequiredArgsConstructor
 public enum ErrorMessages {
-    NOT_FOUND("User with username = %s doesn't exist");
+
+    USERNAME_NOT_FOUND("User with user_name = %s doesn't exist");
     private final String value;
 }
