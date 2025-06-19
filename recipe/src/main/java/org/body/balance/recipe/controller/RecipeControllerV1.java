@@ -9,6 +9,7 @@ import org.body.balance.recipe.exception.SendDataToKafkaException;
 import org.body.balance.recipe.service.RecipeCreateUpdateService;
 import org.body.balance.recipe.service.RecipeDeleteService;
 import org.body.balance.recipe.service.RecipeGetAllService;
+import org.body.balance.recipe.service.RecipeGetByIdService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +23,15 @@ public class RecipeControllerV1 {
 
     private final static String PAGE_SIZE_DEFAULT = "10";
 
+    private final RecipeGetByIdService recipeGetByIdService;
     private final RecipeGetAllService recipeGetAllService;
     private final RecipeCreateUpdateService recipeCreateUpdateService;
     private final RecipeDeleteService recipeDeleteService;
+
+    @GetMapping("/{id}")
+    public ResponseEntity<RecipeResponseDto> getById(@PathVariable String id) {
+        return new ResponseEntity<>(recipeGetByIdService.handleRequest(id), HttpStatus.OK);
+    }
 
     @GetMapping
     public ResponseEntity<List<RecipeResponseDto>> get(@NotNull @RequestParam Integer page,
@@ -41,9 +48,8 @@ public class RecipeControllerV1 {
         }
     }
 
-    @DeleteMapping
-    public ResponseEntity<Integer> delete(@NotNull @RequestParam String recipeId) {
-        return new ResponseEntity<>(recipeDeleteService.handleRequest(recipeId), HttpStatus.OK);
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable String id) {
+        recipeDeleteService.handleRequest(id);
     }
-
 }

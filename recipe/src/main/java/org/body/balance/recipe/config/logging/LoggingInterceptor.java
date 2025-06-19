@@ -43,13 +43,13 @@ public class LoggingInterceptor implements HandlerInterceptor { // todo выне
 
 
         if (ex == null) {
-            log.error("GeneralId: {} Response: {} {} {}",
+            log.info("GeneralId: {} Response: {} {} {}",
                     response.getHeader(MonitoringConstants.HEADER_GENERAL_ID),
                     response.getStatus(),
                     request.getMethod(),
                     request.getRequestURI());
         } else {
-            log.info("GeneralId: {} Response: {} {} {} Exception: {}",
+            log.error("GeneralId: {} Response: {} {} {} Exception: {}",
                     response.getHeader(MonitoringConstants.HEADER_GENERAL_ID),
                     response.getStatus(),
                     request.getMethod(),

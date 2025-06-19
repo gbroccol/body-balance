@@ -19,7 +19,7 @@ public class KafkaConfig {
     }
 
     @Bean
-    public DataSender purchaseCreated(KafkaTemplate<String, String> kafkaTemplate) {
+    public DataSender purchaseCreated(KafkaTemplate<String, String> kafkaTemplate) { // todo del purchase
         return new DataSenderKafka(topicRecipeCreated, kafkaTemplate);
     }
 

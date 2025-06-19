@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import org.body.balance.recipe.domain.dictionary.Unit;
+import org.body.balance.recipe.domain.dictionary.UnitOfMeasurement;
 
 import javax.persistence.*;
 
@@ -26,13 +26,13 @@ public class RecipeIngredient {
     private Recipe recipe;
 
     @ManyToOne
-    @MapsId("ingredientId")
-    @JoinColumn(name = "ingredient_id")
-    private Ingredient ingredient;
+    @MapsId("productId")
+    @JoinColumn(name = "product_id")
+    private Product product; // todo заполнить при сохранении
 
     @ManyToOne
-    @JoinColumn(name = "unit_id")
-    private Unit unit;
+    @JoinColumn(name = "unit_of_measurement_id")
+    private UnitOfMeasurement unitOfMeasurement; // todo заполнить при сохранении
 
-    private Long amount;
+    private Long quantity;
 }

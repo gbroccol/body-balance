@@ -1,9 +1,10 @@
 package org.body.balance.recipe.dto.request;
 
 import java.util.List;
+import java.util.UUID;
 
-public record RecipeRequestDto(String recipeId,
-                               String name,
+public record RecipeRequestDto(UUID id,
+                               String title,
                                String description,
                                Integer cookingTimeMin,
                                Integer activeCookingTimeMin,
@@ -11,7 +12,7 @@ public record RecipeRequestDto(String recipeId,
                                Integer complexity,
                                Integer spiciness,
                                Long cuisineId,
-                               List<StepRequestDto> steps,
-                               List<Integer> tags,
-                               List<IngredientRequestDto> ingredients) {
+                               List<RecipeStepRequestDto> steps,
+//  todo                             List<Integer> tags,
+                               List<RecipeIngredientRequestDto> ingredients) {
 }
