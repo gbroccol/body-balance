@@ -19,10 +19,10 @@ import java.util.Set;
 public class Cuisine {
 
     @Id
-    private Long cuisineId;
+    private Long id;
 
     private String name;
 
-    @OneToMany(mappedBy = "cuisine")
-    private Set<Recipe> recipes;
+//    @OneToMany(mappedBy = "cuisine")
+//    private Set<Recipe> recipes;
 }

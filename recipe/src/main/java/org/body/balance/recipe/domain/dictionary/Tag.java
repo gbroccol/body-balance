@@ -19,10 +19,10 @@ import java.util.Set;
 public class Tag {
 
     @Id
-    private Integer tagId;
+    private Integer id;
 
     private String name;
 
-    @ManyToMany(mappedBy = "tags")
-    private Set<Recipe> recipes;
+//    @ManyToMany(mappedBy = "tags")
+//    private Set<Recipe> recipes;
 }

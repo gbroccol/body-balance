@@ -5,9 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import org.body.balance.recipe.domain.dictionary.Cuisine;
-import org.body.balance.recipe.domain.dictionary.Tag;
-import org.hibernate.annotations.GenericGenerator;
+import org.body.balance.recipe.domain.BaseEntity;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -19,14 +17,9 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(schema = "food")
-public class Recipe {
+public class Recipe extends BaseEntity {
 
-    @Id
-    @GeneratedValue(generator = "uuid-hibernate-generator")
-    @GenericGenerator(name = "uuid-hibernate-generator", strategy = "org.hibernate.id.UUIDGenerator")
-    private String recipeId;
-
-    private String name;
+    private String title;
 
     private String description;
 
@@ -40,26 +33,35 @@ public class Recipe {
 
     private Integer spiciness;
 
-    @ManyToOne
-    @JoinColumn(name = "cuisine_id")
-    private Cuisine cuisine;
-
-    @ManyToMany
-    @JoinTable(
-            name = "recipe_tag",
-            schema = "food",
-            joinColumns = @JoinColumn(name = "recipe_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
-    private Set<Tag> tags = new HashSet<>();
+//    @ManyToOne
+//    @JoinColumn(name = "cuisine_id")
+//    private Cuisine cuisine;
+//
+//    @ManyToMany
+//    @JoinTable(
+//            name = "recipe_tag",
+//            schema = "food",
+//            joinColumns = @JoinColumn(name = "recipe_id"),
+//            inverseJoinColumns = @JoinColumn(name = "tag_id")
+//    )
+//    private Set<Tag> tags = new HashSet<>();
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<RecipeIngredient> ingredients;
 
     @OneToMany(mappedBy = "recipe", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Step> steps = new ArrayList<>();
+    private List<RecipeStep> steps;
 
-    private LocalDateTime deleteDt;
+    private LocalDateTime deletedAt;
+//    private LocalDateTime createdAt;
+
+    //    private ___ calories;
+//    private ___ proteins;
+//    private ___ fats;
+//    private ___ carbohydrates;
+    private String photoUrl;
+//    private String status;
+//    private Boolean isPublic;
 
     private final UUID ownerId = UUID.fromString("fdd3c0c5-01ee-4cc6-8d86-ce47c7a4b57a"); // todo убрать хардкод
 }

@@ -8,12 +8,14 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface RecipeRepository extends JpaRepository<Recipe, String> {
+import java.util.UUID;
+
+public interface RecipeRepository extends JpaRepository<Recipe, UUID> {
 
     @Modifying
-    @Query("UPDATE Recipe r SET r.deleteDt = now() WHERE r.recipeId = :id AND r.deleteDt IS NULL") // todo cron для удаления
-    int markAsDeleted(@Param("id") String id);
+    @Query("UPDATE Recipe r SET r.deletedAt = now() WHERE r.id = :id AND r.deletedAt IS NULL") // todo cron для удаления
+    int markAsDeleted(@Param("id") UUID id); // todo Return value of the method is never used
 
-    Page<Recipe> findByDeleteDtIsNull(Pageable pageable);
+    Page<Recipe> findByDeletedAtIsNull(Pageable pageable);
 
 }

@@ -16,15 +16,15 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(schema = "dictionary")
-public class Unit {
+public class UnitOfMeasurement {
 
     @Id
-    private Long unitId;
+    private Long id;
 
     private String name;
 
     private String shortName;
 
-    @OneToMany(mappedBy = "unit")
+    @OneToMany(mappedBy = "unitOfMeasurement")
     private Set<RecipeIngredient> recipeIngredient;
 }
